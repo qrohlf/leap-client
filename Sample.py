@@ -29,16 +29,17 @@ def index():
 def gen(camera):
     """Video streaming generator function."""
     while True:
-        frame = camera.get_frame()
+        # frame = camera.get_frame()
+        frame = current_image
         yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+               b'Content-Type: image/jpeg\r\n\r\n' + frame.getvalue() + b'\r\n')
 
 
 def gen_frame():
     while True:
         frame = current_image.getvalue()
         yield (b'--frame\r\n'
-            b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+            b'Content-Type: image/jpeg\r\n\r\n' + frame.getvalue() + b'\r\n')
 
 @app.route('/video_feed')
 def video_feed():
@@ -69,13 +70,15 @@ class SampleListener(Leap.Listener):
     def on_images(self, controller):
         global current_image
 
-        if (self.last_image + .2 < time.time()):
+        if (self.last_image + .01 < time.time()):
             image = controller.images[0]
             imagedata = ctypes.cast(image.data.cast().__long__(), ctypes.POINTER(image.width*image.height*ctypes.c_ubyte)).contents
             image_object = Image.frombuffer("L", (image.width, image.height), imagedata, "raw", "L", 0, 1)
             # image_object.save(current_image, "JPEG");
-            image_object.save("1.jpg", "JPEG");
-            print "Got Image"
+            # image_object.save("1.jpg", "JPEG");
+            current_image = StringIO.StringIO()
+            image_object.save(current_image, format="JPEG")
+            # print "Got Image"
             self.last_image = time.time()
             # controller.remove_listener(self);
         
