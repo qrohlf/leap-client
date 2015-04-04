@@ -52,9 +52,25 @@ p {
 	opacity: 0.2;
 }
 
+#number {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transition: all 1s ease-out;
+	transform: scale(1) translate(-50%, -50%);
+	color: white;
+	font-size: 200px;
+}
+
+#number.out {
+	transform: scale(1.5), translate(-50%, -50%);
+	opacity: 0;
+}
+
 
 .roundbutton {
 	display: inline-block;
+	margin-top: 30px;
 	padding-top: 13px;
 	background: #FFF;
 	height: 80px;

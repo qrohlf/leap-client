@@ -3,13 +3,7 @@ var overlayColor = '#2E0927';
 
 $(document).ready(function() {
 	$('#shutter').click(function() {
-		$('#video').addClass('flash');
-		
-		setTimeout(function() {
-			$('#video').removeClass('flash');
-		}, 300);
-
-		upload();
+        countdown();
 	});
 
 	$('.overlay-buttons').on('click', function(e) {
@@ -60,6 +54,37 @@ function upload(){
     }).error(function() {
         alert('Could not reach api.imgur.com. Sorry :(');
     });
+}
+
+function randomColor() {
+    var colors = ['#FD7400','#BEDB39','#3498DB','#D90000','#2E0927','#FF358B'];
+    setOverlay(colors[Math.floor(Math.random()*colors.length)]);
+}
+
+function snapshot() {
+    $('#video').addClass('flash');
+        
+    setTimeout(function() {
+     $('#video').removeClass('flash');
+     randomColor();
+    }, 300);
+
+    upload();
+}
+
+function countdown() {
+    var number = $('#number');
+    var num = 4;
+    number.text(num);
+    var timer = setInterval(function() {
+        num -= 1;
+        number.text(num);
+        if (num == 0) {
+            number.text(" ");
+            clearInterval(timer);
+            snapshot();
+        }
+    }, 1000);
 }
 
 function post(url, submitter) {
