@@ -3,12 +3,25 @@
     <title>IMPRINT</title>
     <link rel="stylesheet" href="/style.css">
     <script src="//use.edgefonts.net/lato;source-sans-pro.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="scripts.js"></script>
   </head>
   <body>
     <h1>IMPRINT</h1>
-    <!-- <img id="video" src="{{ url_for('video_feed') }}" /> -->
-    <img id="video" src="1.jpg" />
+    <p>Smile for the infrared depth sensor</p>
+    <div class="video-wrap">
+    	<img id="video" src="{{ url_for('video_feed') }}" />
+    	<!-- <img id="video" src="1.jpg" /> -->
+    	<div class="overlay" style="background: #2E0927"> </div>
+    </div>
+    <div class="overlay-buttons">
+    	<a class="overlay-swatch" data-color="#FD7400" href='#' style="background: #FD7400"> </a>
+    	<a class="overlay-swatch" data-color="#BEDB39" href='#' style="background: #BEDB39"> </a>
+    	<a class="overlay-swatch" data-color="#3498DB" href='#' style="background: #3498DB"> </a>
+    	<a class="overlay-swatch" data-color="#D90000" href='#' style="background: #D90000"> </a>
+    	<a class="overlay-swatch" data-color="#2E0927" href='#' style="background: #2E0927"> </a>
+    	<a class="overlay-swatch" data-color="#FF358B" href='#' style="background: #FF358B"> </a>
+    </div>
     <a href="#" class="roundbutton" id="shutter"><span class="icon-camera"></span></a>
-    <script src="scripts.js"></script>
   </body>
 </html>

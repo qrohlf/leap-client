@@ -2,39 +2,101 @@ html {
 	height: 100%;
 	width: 100%;
 	box-sizing: border-box;
+	margin: 0 0;
 }
 
 *, *:before, *:after {
   box-sizing: inherit;
+  margin: 0 0;
 }
 
 
 body {
 	height: 100%;
 	width: 100%;
-	font-family: source-sans-pro, sans-serif;
-	background: #1F1F1F;
+	font-family: lato, sans-serif;
+	background: #191919;
 	color: #FFF;
 	text-align: center;
+	overflow: hidden;
+	margin: 0 0;
+	padding: 0 0;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1 {
+	font-family: lato, sans-serif;
+	font-size: 48px;
+	margin: 24px 0 0 0;
+}
+
+p {
+	font-style: italic;
+	margin-bottom: 24px;
+}
+
+.video-wrap {
+	background-color: #FFF;
+	position: relative;
 }
 
 #video {
 	display: block;
 	width: 100%;
 	height: auto;
+	margin: 0 0;
+	transition: all 0.3s ease;
+}
+
+#video.flash {
+	opacity: 0.2;
 }
 
 
 .roundbutton {
 	display: inline-block;
-	padding-top: 8px;
+	padding-top: 13px;
 	background: #FFF;
-	height: 72px;
-	width: 72px;
+	height: 80px;
+	width: 80px;
 	font-size: 48px;
 	border-radius: 50%;
-	color: #272727;
+	color: #868686;
 	text-decoration: none;
+	transition: all 0.2s ease;
+}
+
+.roundbutton:hover {
+	transform: scale(1.06);
+}
+
+.overlay-buttons {
+	margin: 0 0 16px 0;
+	vertical-align: top;
+	display: flex;
+}
+
+.overlay-swatch {
+	display: block;
+	margin: 0;
+	padding: 0;
+	height: 20px;
+	margin-bottom: 10px;
+	width: 16.66%;
+}
+
+.overlay-swatch:hover {
+	height: 30px;
+	margin-bottom: 0;
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0.2;
 }
 
 @font-face {
