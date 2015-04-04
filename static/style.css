@@ -1,0 +1,72 @@
+html {
+	height: 100%;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+body {
+	height: 100%;
+	width: 100%;
+	font-family: source-sans-pro, sans-serif;
+	background: #1F1F1F;
+	color: #FFF;
+	text-align: center;
+}
+
+#video {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+
+.roundbutton {
+	display: inline-block;
+	padding-top: 8px;
+	background: #FFF;
+	height: 72px;
+	width: 72px;
+	font-size: 48px;
+	border-radius: 50%;
+	color: #272727;
+	text-decoration: none;
+}
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?-mfqk28');
+	src:url('fonts/icomoon.eot?#iefix-mfqk28') format('embedded-opentype'),
+		url('fonts/icomoon.woff?-mfqk28') format('woff'),
+		url('fonts/icomoon.ttf?-mfqk28') format('truetype'),
+		url('fonts/icomoon.svg?-mfqk28#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-camera:before {
+	content: "\e90f";
+}
+
+.icon-spinner11:before {
+	content: "\e984";
+}
+

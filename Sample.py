@@ -17,7 +17,7 @@ import StringIO
 from camera import Camera
 
 # flask app
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', static_url_path='')
 
 # global image stream
 current_image = StringIO.StringIO()
@@ -69,7 +69,7 @@ class SampleListener(Leap.Listener):
     def on_images(self, controller):
         global current_image
 
-        if (self.last_image + 1 < time.time()):
+        if (self.last_image + .2 < time.time()):
             image = controller.images[0]
             imagedata = ctypes.cast(image.data.cast().__long__(), ctypes.POINTER(image.width*image.height*ctypes.c_ubyte)).contents
             image_object = Image.frombuffer("L", (image.width, image.height), imagedata, "raw", "L", 0, 1)
