@@ -1,4 +1,5 @@
 var clientId = "28b5ac55dadb221";
+var overlayColor = '#2E0927';
 
 $(document).ready(function() {
 	$('#shutter').click(function() {
@@ -19,6 +20,7 @@ $(document).ready(function() {
 
 function setOverlay(color) {
 	$('.overlay').css('background', color);
+	overlayColor = color;
 }
 
 function upload(){
@@ -62,12 +64,13 @@ function upload(){
 
 function post(url, submitter) {
 	data = {image: {
-		submitter: submitter,
+		color: overlayColor,
 		url: url
 	}}
 	$.ajax({
 		method: 'POST',
 		url: 'https://cryptic-basin-4493.herokuapp.com',
+		// url: 'http://localhost:3000',
 		contentType:"application/json; charset=utf-8",
 		data: JSON.stringify(data)
 	}).success(function(data) {
