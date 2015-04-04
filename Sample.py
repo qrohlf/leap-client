@@ -38,12 +38,12 @@ def gen_frame():
     while True:
         frame = current_image.getvalue()
         yield (b'--frame\r\n'
-            b'Content-Type: image/png\r\n\r\n' + frame + b'\r\n')
+            b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 @app.route('/video_feed')
 def video_feed():
-    return Response(gen_frame(),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
+    # return Response(gen_frame(),
+                    # mimetype='multipart/x-mixed-replace; boundary=frame')
     return Response(gen(Camera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
@@ -69,11 +69,12 @@ class SampleListener(Leap.Listener):
     def on_images(self, controller):
         global current_image
 
-        if (self.last_image + .1 < time.time()):
+        if (self.last_image + 1 < time.time()):
             image = controller.images[0]
             imagedata = ctypes.cast(image.data.cast().__long__(), ctypes.POINTER(image.width*image.height*ctypes.c_ubyte)).contents
             image_object = Image.frombuffer("L", (image.width, image.height), imagedata, "raw", "L", 0, 1)
-            image_object.save(current_image, "JPEG");
+            # image_object.save(current_image, "JPEG");
+            image_object.save("1.jpg", "JPEG");
             print "Got Image"
             self.last_image = time.time()
             # controller.remove_listener(self);
